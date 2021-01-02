@@ -1,0 +1,13 @@
+Django>=3.1
+gunicorn>=20.0.4
+djangorestframework>=3.11.1
+djangorestframework-jwt>=1.11.0
+django-cors-headers>=3.5.0
+mysqlclient>=2.0.1
+firebase-admin>=4.3.0
+python-dotenv>=0.14.0
+schedule>=0.6.0
+django-ratelimit>=3.0.1
+reportlab>=3.5.55
+pandas>=1.1.5
+openpyxl>=3.0.5
