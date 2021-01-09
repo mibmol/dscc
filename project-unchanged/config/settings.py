@@ -6,7 +6,7 @@ load_dotenv(override=True)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = get_env("SECRET_KEY")
-DEBUG = get_env("DEBUG") == "True"
+DEBUG = False
 ADMIN_ENABLED = get_env("ADMIN_ENABLED") == "True"
 ALLOWED_HOSTS = get_env("ALLOWED_HOSTS").split("|")
 CORS_ALLOWED_ORIGINS = get_env("CORS_ORIGIN_WHITELIST").split("|")
@@ -26,10 +26,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "users.apps.UsersConfig",
     "authentication.apps.AuthenticationConfig",
-    "purchase.apps.PurchaseConfig",
-    "topup.apps.TopupConfig",
     "company.apps.CompanyConfig",
-    "notification.apps.NotificationConfig",
+    "django_seed",
 ]
 
 MIDDLEWARE = [
@@ -64,7 +62,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": get_env("DB_NAME"),
         "HOST": get_env("DB_HOSTNAME"),
         "PORT": get_env("DB_PORT"),

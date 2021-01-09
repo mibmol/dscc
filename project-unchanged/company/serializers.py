@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Company, GasStation, TipAd, Policies
+from .models import Company, GasStation
 
 
 class CompanyBasicSerializer(serializers.ModelSerializer):
@@ -58,38 +58,6 @@ class BasicGasStationSerializer(serializers.ModelSerializer):
         model = GasStation
         fields = ["id", "ruc", "name", "address"]
 
-
-class TipAdSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = TipAd
-        fields = ['id', "created_at", "title", "description", "img_path"]
-
-
-class TipAdSerializerAll(serializers.ModelSerializer):
-    company = CompanyBasicSerializer(read_only=True)
-    class Meta:
-        model = TipAd
-        fields = '__all__'
-
-
-class PoliciesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Policies
-        fields = ["id", "description"]
-
-
-class CreateTipAdSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = TipAd
-        fields = [
-            "kind",
-            "created_by",
-            "company",
-            "gas_station",
-            "title",
-            "description",
-            "img_path",
-        ]
 
 
 class CoordSerializer(serializers.Serializer):

@@ -19,7 +19,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 
-from .service import UserService, RoleService, PermissionService, search_users, ResetPassword
+from .service import UserService, PermissionService, search_users
 from .permissions import IsGasStationAdmin, IsSuperUser, IsCompanyAdmin
 from authentication.service import AuthService
 from authentication.auth_classes import JWTAuthCookie
@@ -29,8 +29,6 @@ from .utils.password_generator import getPassword
 
 auth_service = AuthService()
 user_service = UserService()
-role_service = RoleService()
-reset_pass = ResetPassword()
 permission_service = PermissionService()
 
 
@@ -105,20 +103,6 @@ class BillingData(APIView):
 		return Response(data=updated_data)
 
 
-class BalanceData(APIView):
-	def get(self, request):
-		station_id = request.GET.get("station_id")
-		if station_id and station_id.isdigit():
-			balance = user_service.get_balance(user=request.user, station_id=station_id)
-			if not balance:
-				return Response(
-					status=status.HTTP_404_NOT_FOUND, data={"msg": "no hay balance"}
-				)
-			return Response(data={"balance": balance})
-
-		balances = user_service.get_company_balances(user=request.user)
-		return Response(data={"balances": balances})
-
 
 @api_view(["GET"])
 def get_vehicles(request):
@@ -162,98 +146,9 @@ def user_search(request):
 
 
 @api_view(["POST"])
-@permission_classes([AllowAny])
-@authentication_classes([])
-def reset_password(request):
-	email = request.data.get("email")
-	if not email:
-		raise exceptions.AuthenticationFailed("email required")
-
-	user = user_service.get_user(email=request.data.get("email"))
-	# if not user:
-	#    raise exceptions.AuthenticationFailed("wrong, don't exist that email")
-	if user:
-		reset_pass.send_email(user)
-
-	return Response(status=200, data={"msg": "correo enviado"})
-
-
-@api_view(["GET"])
-@permission_classes([AllowAny])
-@authentication_classes([])
-def reset_password_done(request):
-	return render(request, "reset/password_reset_done.html")
-
-
-@api_view(["GET"])
-@permission_classes([AllowAny])
-@authentication_classes([])
-def reset_password_error(request):
-	return render(request, "reset/password_reset_error.html")
-
-
-@api_view(["POST"])
 @authentication_classes([JWTAuthCookie])
 @permission_classes([IsCompanyAdmin | IsSuperUser | IsGasStationAdmin])
 def change_status(request):
     new_Status = request.data.get("new_status")
     email = request.data.get("email")
     return Response(data=user_service.change_status(email, new_Status))
-
-class CompletePasswordReset(View):
-	def get(self, request, uidb64, token):
-		context = {"uidb64": uidb64, "token": token}
-
-		try:
-			id_user = force_text(urlsafe_base64_decode(uidb64))
-			user = user_service.get_user(id=id_user)
-
-			payload = reset_pass.verify_token(token)
-			if not user or not payload:
-				return redirect("reset-password-error")
-
-			is_valid = reset_pass.verify_user_token_uidb(payload, user)
-			if not is_valid:
-				return redirect("reset-password-error")
-		except Exception as identifier:
-			pass
-
-		return render(request, "reset/password_reset.html", context)
-
-	def post(self, request, uidb64, token):
-		context = {"uidb64": uidb64, "token": token}
-
-		cedula = request.POST["cedula"]
-		password = request.POST["password"]
-		password2 = request.POST["password2"]
-
-		if password != password2:
-			messages.error(request, "Contraseñas no coinciden")
-			return render(request, "reset/password_reset.html", context)
-
-		if len(password) < 8:
-			messages.error(request, "Contraseñas muy corta")
-			return render(request, "reset/password_reset.html", context)
-
-		try:
-			id_user = force_text(urlsafe_base64_decode(uidb64))
-			user = user_service.get_user(id=id_user)
-
-			if cedula != user.cedula:
-				messages.error(request, "Cedula incorrecta")
-				return render(request, "reset/password_reset.html", context)
-
-			payload = reset_pass.verify_token(token)
-			if not user or not payload:
-				return redirect("reset-password-error")
-
-			# establecer la contraseña
-			user.set_password(password)
-			user.save()
-
-			messages.success(request, "")
-			return redirect("reset-password-done")
-		except Exception as identifier:
-			messages.info(request, "Ocurrio un problema, intente de nuevo")
-			return render(request, "reset/password_reset.html", context)
-

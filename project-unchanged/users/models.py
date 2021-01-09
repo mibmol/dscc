@@ -20,7 +20,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     city = models.CharField(max_length=100, null=True)
     address = models.CharField(max_length=500, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    devices = models.JSONField(null=True)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["first_name", "last_name"]
@@ -33,35 +32,3 @@ class User(AbstractBaseUser, PermissionsMixin):
     @property
     def is_staff(self):
         return self.is_admin
-
-
-# abcd123 === abdc-123
-class VehiclesId(models.Model):
-    number = models.CharField(max_length=10, unique=False)
-    alias = models.CharField(max_length=50, null=True)
-    user = models.ForeignKey(
-        "users.User", on_delete=models.CASCADE, related_name="vehicles_ids"
-    )
-    created_at = models.DateTimeField(auto_now_add=True)
-    deleted = models.BooleanField(default=False)
-
-
-# class UserCompanyBalance(models.Model):
-# 	total = models.FloatField(default=0.0)
-# 	user = models.ForeignKey(User, on_delete=models.CASCADE)
-# 	company = models.ForeignKey("company.Company", on_delete=models.CASCADE)
-#     gas_station = models.ForeignKey(GasStation, on_delete=models.DO_NOTHING)
-
-
-class UserGasStationBalance(models.Model):
-    total = models.FloatField(default=0.0)
-    user = models.ForeignKey("users.User", on_delete=models.CASCADE)
-    company = models.ForeignKey("company.Company", on_delete=models.CASCADE)
-    gas_station = models.ForeignKey("company.GasStation", on_delete=models.DO_NOTHING)
-
-
-class UserStation(models.Model):
-    user = models.ForeignKey("users.User", on_delete=models.CASCADE)
-    gas_station = models.ForeignKey("company.GasStation", on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-
