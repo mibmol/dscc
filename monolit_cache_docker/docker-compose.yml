@@ -1,0 +1,28 @@
+version: "3.7"
+  
+services:
+  app0:
+    image: python:3
+    build: .
+    command: sh -c "gunicorn config.wsgi -b 0.0.0.0:8000"
+    network_mode: "host"
+    ports:
+      - 8000:8000
+    working_dir: /home/mglps/Documents/DSCC/pro/dscc/monolit_cache_docker
+
+  app1:
+    image: python:3
+    build: .
+    command: sh -c "gunicorn config.wsgi -b 0.0.0.0:8001"
+    network_mode: "host"
+    ports:
+      - 8001:8001
+    working_dir: /home/mglps/Documents/DSCC/pro/dscc/monolit_cache_docker
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - app0
+      - app1
