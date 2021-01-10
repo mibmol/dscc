@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "fuelpay-xyz",
+  "private_key_id": "da1ad26706798885078f492cf0e71db6f041cfc0",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCLQfocmSiAApIA\nKPBS7NiSCwL8jWf4HHGcesxy1Clv7hm39H/s/FAQM2hYxkR4KQHG14n0WD0xQl8t\nAruCrgfc3R5CDeYvCKJd+jRzMkT8u3TE/fHY0cFLMtS1hdyUK7o9Ywv5wkRTb8Xs\n8S1LrObAq5ShWCcYcgSKn3++ymZ2+V2Rlw8I8+ecjGnzboohRgHUSXXGW8Q6HDV9\nTxzNilQLi3hBJ3ZS/aqHq49mGfJGsL8AtO3vKuTOByK/2NOxOsn/2UUkVBNKqkix\nEP6yvl3a9ILblrdoAyxXY7QYcLKxOpKcTKTOhOCEVJHcD8J5XxpN2HUPM1KP8LJq\nMIQcTFw/AgMBAAECggEAL41xBdD69nNqPam9HuQHtB8Ufv8ecKft17xLEi8Gk1Uf\n7SQNhvRFtrKHQEE74jhGhgrV7d0v0CFU9L7JHv+kabQMAAxU/Nya7TJiNLAGxLKS\nVi5NJnfB5JbP8chrISGpcArhbQD8ae1yDc3xZLT++u3cTBgZCYztphR+/7yHrrpJ\nQrsS07eUlDUNlpL7O+vl5QKbv1tUtzOB2jI4U2+jRetMZKhufF0w5vQV6qjrT0QX\ndzXfzdONTWIeRwmzb5Y2LX+R0RV9OyxSQRb7d1XLuWej1irxcIQxS9blrwVPWYm2\nNuPXUrcyfdC/AgbiSnjQSlLM/JzU3Lg1zWYeWUW9cQKBgQDD53F5hEJ30dv8yuxF\ne9mnYDABKn1BZnSQaU20aDLULhEGNMTQyINJ7ObZsJk4+JQ0om4Xy24EkcogwcO6\nWPSdrkTFczmV8ADlhGx3hFxYqV5Tqx19ZeEPScrlZXtGIbUuWGtHPPOik+kmCxW5\nTk8Tejb97eCN0zvq0YaAK/4Z9wKBgQC1+gj3zqHOphlchLEOm6n9iH1tIMIyrU7L\nkyQY4qAYuNrFsWkeoNKbCOriXAbK8UEOzCuNuIk8yph1F8lpRJRl0N41w3ug6U2p\niGUCvqzYEydqNPXT8RHt1NJLmwz2PuhbGGv8BPYFEBSzrjmxHap+g7QM+AG0R/ei\n6j0X4mT9+QKBgGPJMg25hrnNlYZwPmUuLrGI1yrg36g+bcVZPhFUuf9F77n/ivjm\nCanQF85um71fMO6Whglsv39oW1LQH8h9oyvmJnWEuaJb+7js+Orv6rHmo3tuv7it\n+jN1XPn39RDF/qm6s/o3W8pGGQ4du1UGRFUhfX1ee3ECVZTIYQBMaEQFAoGAHY+O\nYWLpmf4VZJgRgwP6azr+1PlbUowgnqU6WeiGhT2SHEcjglwxmgmqzjaQy+rA3LyB\n3rW5ZWyrs2m3yCfhy2BQmH821/7OJNoJPpbm0Prbjj8oJ9OjS/UkbC+1vVKewB2J\nfRj5Nf1Uv5Nvv7vH9GFEoE6xSC3gplBSuEyIh1ECgYA1WZbIFI+6brp1HJq++lJO\nfNl1q7MtvE6ZkMxgT1bJ696TgrFQv7toWtB6zdtOEo+/LGcb7HGFWv9RRnev1tFP\nykY4n3New9trUqHvpju6tO8kdkmtSWSKe0eRebSr0+PJSLmrsza54fLwWx+Pw+hO\na8BNvMLScfPSErszsX9rlg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-yjnfg@fuelpay-xyz.iam.gserviceaccount.com",
+  "client_id": "108857588098894643035",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-yjnfg%40fuelpay-xyz.iam.gserviceaccount.com"
+}

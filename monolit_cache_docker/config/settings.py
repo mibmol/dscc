@@ -6,7 +6,7 @@ load_dotenv(override=True)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = get_env("SECRET_KEY")
-DEBUG = False
+DEBUG = True
 ADMIN_ENABLED = False
 ALLOWED_HOSTS = get_env("ALLOWED_HOSTS").split("|")
 CORS_ALLOWED_ORIGINS = get_env("CORS_ORIGIN_WHITELIST").split("|")
@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     "users.apps.UsersConfig",
     "authentication.apps.AuthenticationConfig",
     "company.apps.CompanyConfig",
-    "django_seed",
 ]
 
 MIDDLEWARE = [
