@@ -1,0 +1,16 @@
+25000:	lat: 20.97 ms	req/s: 410.75	throughput: 320.24267 KB/s
+50000:	lat: 20.18 ms	req/s: 410.55	throughput: 343.088 KB/s
+100000:	lat: 26.62 ms	req/s: 409.17	throughput: 335.59 KB/s
+150000:	lat: 29.3 ms	req/s: 408.42	throughput: 335.00534 KB/s
+200000:	lat: 31.28 ms	req/s: 407.25	throughput: 334.51734 KB/s
+250000:	lat: 34.65 ms	req/s: 405.59	throughput: 333.58934 KB/s
+300000:	lat: 35.02 ms	req/s: 405.09	throughput: 234.79734 KB/s
+400000:	lat: 38.9 ms	req/s: 399.59	throughput: 234.70334 KB/s
+500000:	lat: 40.17 ms	req/s: 389.17	throughput: 253.15667 KB/s
+600000:	lat: 51.82 ms	req/s: 384.09	throughput: 234.71467 KB/s
+800000:	lat: 65.73 ms	req/s: 383.34	throughput: 283.85867 KB/s
+1000000:	lat: 95.58 ms	req/s: 340.09	throughput: 228.6506 KB/s
+2000000:	lat: 100.3 ms	req/s: 330.42	throughput: 243.97067 KB/s
+3000000:	lat: 112.47 ms	req/s: 319.67	throughput: 244.25 KB/s
+4000000:	lat: 128.43 ms	req/s: 307.59	throughput: 240.05334 KB/s
+

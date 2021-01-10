@@ -13,11 +13,11 @@ company_service = CompanyService()
 @api_view(["GET"])
 @authentication_classes([])
 @permission_classes([])
-def get_station(request, id):
-	if not id:
+def get_station(request, idx):
+	if not idx:
 		return Response(status=status.HTTP_400_BAD_REQUEST)
 
-	result = company_service.get_station(id)
+	result = company_service.get_station(idx)
 	if not result:
 		return Response(status=status.HTTP_404_NOT_FOUND)
 	return Response(data={"station": result})
