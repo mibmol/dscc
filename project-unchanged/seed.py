@@ -9,7 +9,7 @@ cur = conn.cursor()
 
 fake = Faker()
 
-DEFAULT_N = 25000
+DEFAULT_N = 1000000
 SPLITS = 6
 
 def get_params():
@@ -115,35 +115,39 @@ def insert_stations(n):
     cur.execute("SELECT id FROM company_company")
     rs = cur.fetchall()
     ids = [row[0] for row in rs]
-    n = math.ceil(n / SPLITS)
+    n = math.ceil(n / len(ids))
     for company_id in ids:
         ruc_prefix = int_string(random.randint(1, 9999999999), 10)
-        for i in range(n):
-            cur.execute(
-                """
-                INSERT INTO company_gasstation (
-                    company_id,
-                    ruc,
-                    name,
-                    latitude,
-                    longitude,
-                    address,
-                    is_pilot,
-                    global_purchase_rating
-                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",
-                (
-                    company_id,
-                    ruc_prefix + int_string((i + 1), 5),
-                    fake.company(),
-                    random.uniform(-2.157136, -2.156450),
-                    random.uniform(-79.898737, -79.898633),
-                    fake.address(),
-                    False,
-                    4.8,
-                ),
-            )
-        conn.commit()
-        print(f"inserted STATIONS company_id: {company_id} total: {n}")
+        splits = math.ceil(n/SPLITS)
+        count = 0
+        for j in range(SPLITS):
+            for i in range(splits):
+                count += 1
+                cur.execute(
+                    """
+                    INSERT INTO company_gasstation (
+                        company_id,
+                        ruc,
+                        name,
+                        latitude,
+                        longitude,
+                        address,
+                        is_pilot,
+                        global_purchase_rating
+                    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",
+                    (
+                        company_id,
+                        ruc_prefix + int_string((count + 1), 5),
+                        fake.company(),
+                        random.uniform(-2.157136, -2.156450),
+                        random.uniform(-79.898737, -79.898633),
+                        fake.address(),
+                        False,
+                        4.8,
+                    ),
+                )
+            conn.commit()
+            print(f"inserted STATIONS company_id: {company_id} total: {splits}")
 
 
 if __name__ == "__main__":
