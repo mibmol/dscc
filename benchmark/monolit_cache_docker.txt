@@ -1,0 +1,3 @@
+50000:	lat: 48.99 ms	req/s: 653.92	throughput: 205.30134 KB/s
+500000:	lat: 51.85 ms	req/s: 635.17	throughput: 199.44534 KB/s
+1000000:	lat: 49.37 ms	req/s: 649.17	throughput: 203.82934 KB/s
