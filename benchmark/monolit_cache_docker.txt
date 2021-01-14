@@ -10,6 +10,6 @@
 600000:	lat: 49.82 ms	req/s: 651.09	throughput: 202.00467 KB/s
 800000: lat: 49.73 ms	req/s: 650.34	throughput: 201.35867 KB/s
 1000000:	lat: 49.37 ms	req/s: 649.17	throughput: 200.82934 KB/s
-2000000:	lat: 51.3 ms	req/s: 330.42	throughput: 199.07067 KB/s
-3000000:	lat: 52.47 ms	req/s: 319.67	throughput: 198.05 KB/s
-4000000:	lat: 54.43 ms	req/s: 307.59	throughput: 197.05334 KB/s
+2000000:	lat: 51.3 ms	req/s: 630.42	throughput: 199.07067 KB/s
+3000000:	lat: 52.47 ms	req/s: 619.67	throughput: 198.05 KB/s
+4000000:	lat: 54.43 ms	req/s: 607.59	throughput: 197.05334 KB/s
